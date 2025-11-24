@@ -12,7 +12,14 @@ let data = {
             origin: "",
             stored: "Sviland",
             image: "smågatestein/637dce97f6656b88d378c885_Beer-Mix_smågatestein_brostein_4.jpg",
-            note: "",
+            note: `Dette er en laaaang merknad...
+            Dette er en laaaang merknad....
+            Dette er en laaaang merknad...
+            .Dette er en laaaang merknad....
+            Dette er en laaaang merknad....Dette er en 
+            laaaang merknad....Dette er en laaaang merknad....
+            Dette er en laaaang merknad....Dette er en laaaang
+             merknad....Dette er en laaaang merknad....Her er slutten på teksten`,
         },
         {
             name: "Smågatestein",
@@ -118,7 +125,7 @@ let data = {
             length: 100,
             width: 100,
             height: 100,
-            amount: 25,
+            amount: 27,
             color: "Grå",
             surface: "",
             origin: "",
@@ -146,7 +153,7 @@ let data = {
             length: 10,
             width: 10,
             height: 10,
-            amount: 2,
+            amount: 5,
             color: "Grå",
             surface: "Saget",
             origin: "Ruten",
@@ -154,7 +161,6 @@ let data = {
             image: "smågatestein/fwf23e2d.jpg",
             note: "Her kan vi skrive ekstra informasjon om steinen...",
         },
-
     ],
 
     storgatestein: [
@@ -169,8 +175,50 @@ let data = {
             surface: "",
             origin: "",
             stored: "Sviland",
-            image: "storgatestein/ce3werouu23440u23.jpg",
+            image: "Storgatestein/ce3werouu23440u23.jpg",
             note: "",
+        },
+        {
+            name: "Storgatestein",
+            material: "Granitt",
+            length: 200,
+            width: 140,
+            height: 140,
+            amount: 67,
+            color: "Grå",
+            surface: "",
+            origin: "",
+            stored: "Sviland",
+            image: "Storgatestein/dqwqw2332342342.jpg",
+            note: "",
+        },
+        {
+            name: "Storgatestein",
+            material: "Granitt",
+            length: 200,
+            width: 140,
+            height: 140,
+            amount: 67,
+            color: "Grå",
+            surface: "",
+            origin: "",
+            stored: "Sviland",
+            image: "Storgatestein/storgate3.jpg",
+            note: "",
+        },
+        {
+            name: "Storgatestein",
+            material: "Granitt",
+            length: 200,
+            width: 140,
+            height: 140,
+            amount: 13,
+            color: "Brun",
+            surface: "",
+            origin: "Lura Skole",
+            stored: "Sviland",
+            image: "Storgatestein/storgate4.jpg",
+            note: "Ble tatt opp på lura skole 2014",
         },
     ],
 
@@ -259,20 +307,6 @@ let data = {
             image: "belegningsstein/23425623424.jpg",
             note: "",
         },
-                {
-            name: "Belegningsstein",
-            material: "Betong",
-            length: 200,
-            width: 100,
-            height: 6,
-            amount: 55,
-            color: "Grå",
-            surface: "Behandlet",
-            origin: "Ruten",
-            stored: "Sviland",
-            image: "belegningsstein/35333f3434.jpg",
-            note: "Mye belegg for pengene",
-        },
         {
             name: "Belegningsstein",
             material: "Betong",
@@ -293,40 +327,12 @@ let data = {
             length: 200,
             width: 100,
             height: 6,
-            amount: 20,
-            color: "Hvit",
+            amount: 7,
+            color: "Grå",
             surface: "",
             origin: "",
             stored: "Sviland",
             image: "belegningsstein/23425623424.jpg",
-            note: "",
-        },
-         {
-            name: "Belegningsstein",
-            material: "Betong",
-            length: 200,
-            width: 100,
-            height: 6,
-            amount: 71,
-            color: "Grå",
-            surface: "Behandlet",
-            origin: "Ruten",
-            stored: "Sviland",
-            image: "belegningsstein/35333f3434.jpg",
-            note: "",
-        },
-          {
-            name: "Belegningsstein",
-            material: "Betong",
-            length: 200,
-            width: 100,
-            height: 6,
-            amount: 71,
-            color: "Grå",
-            surface: "Behandlet",
-            origin: "Ruten",
-            stored: "Sviland",
-            image: "belegningsstein/35333f3434.jpg",
             note: "",
         },
     ],
@@ -338,24 +344,52 @@ let data = {
             length: 22,
             width: 11,
             height: 5,
-            amount: 140,
+            amount: 85,
             color: "Brun",
             surface: "",
             origin: "",
             stored: "Sviland",
             image: "tegl/23423desf24.jpg",
             note: "",
-        }
+        },
+         {
+            name: "Tegl",
+            material: "Keramisk",
+            length: 20,
+            width: 10,
+            height: 6,
+            amount: 140,
+            color: "Brun",
+            surface: "",
+            origin: "",
+            stored: "Vatne",
+            image: "tegl/tegl2.jpg",
+            note: "",
+        },
+         {
+            name: "Tegl",
+            material: "Keramisk",
+            length: 20,
+            width: 11,
+            height: 5,
+            amount: 15,
+            color: "Brun",
+            surface: "",
+            origin: "",
+            stored: "Vatne",
+            image: "tegl/tegl3.jpg",
+            note: "",
+        },
     ],
 
     heller: [
         {
             name: "Heller",
             material: "Betong",
-            length: 30,
-            width: 30,
+            length: 60,
+            width: 60,
             height: 5,
-            amount: 5000,
+            amount: 50,
             color: "Grå",
             surface: "",
             origin: "",
@@ -397,9 +431,34 @@ let data = {
     ],
 
     kurvestein: [
-        {
-
-        }
+         {
+            name: "Kurvestein",
+            material: "Granitt",
+            length: 1000,
+            width: 30,
+            height: 20,
+            amount: 27,
+            color: "Hvit",
+            surface: "",
+            origin: "",
+            stored: "Sviland",
+            image: "kurvestein/kurvestein1.jpg",
+            note: "",
+        },
+         {
+            name: "Kurvestein",
+            material: "Granitt",
+            length: 1000,
+            width: 30,
+            height: 20,
+            amount: 15,
+            color: "Hvit",
+            surface: "",
+            origin: "",
+            stored: "Sviland",
+            image: "kurvestein/kurvestein2.jpg",
+            note: "",
+        },
     ],
 
     platekant: [
@@ -425,6 +484,18 @@ const item = [
     "smågatestein", "storgatestein", "belegningsstein", "tegl",
     "heller", "kantstein", "kurvestein", "platekant"
 ];
+
+
+const sortSettings = {
+    smågatestein: "Index",
+    storgatestein: "Index",
+    belegningsstein: "Index",
+    tegl: "Index",
+    heller: "Index",
+    kantstein: "Index",
+    kurvestein: "Index",
+    platekant: "Index"
+};
 
 
 const squareMeterOrMeter = (element) => {
@@ -521,10 +592,7 @@ const selectWindow = (event) => {
     let material = materialRaw.toLowerCase();
     let number = parseInt(numberRaw)
 
-    let dataType = data[material]
-    let currentObject = dataType[number] //for information targeting
-
-    displayInfo(currentObject)
+    displayInfo(data[material][number])
 
     let currentImage = document.getElementById(event.currentTarget.id)
     if (currentImage !== selected) {
@@ -565,22 +633,22 @@ const displayInfo = (currentObject) => {
 const mininmizeButton = (event) => {
     let btn = event.currentTarget
     let line = event.currentTarget.id.split("-")[0]
-    let lineId = document.getElementById(`${line}-item`)
+    let container = document.getElementById(`${line}-item`)
 
     if (btn.textContent == "-") {
         btn.textContent = "+"
-        lineId.classList.add("collapsed-line")
+        container.classList.add("collapsed-line")
     } else if (btn.textContent == "+") {
         btn.textContent = "-"
-        lineId.classList.remove("collapsed-line")
+        container.classList.remove("collapsed-line")
     }
 }
 
 
 const sortButtonDropdown = (event) => {
-    let buttonId = event.currentTarget.id
-    let dropdownMenu = document.getElementById(`${buttonId.split("-")[0]}-sort-dropdown`)
-    let allDropdownMenu = document.querySelectorAll(".sort-dropdown")
+    let buttonId = event.currentTarget.id //smågatestein-sort-btn
+    let dropdownMenu = document.getElementById(`${buttonId.split("-")[0]}-sort-dropdown`) //whole div
+    let allDropdownMenu = document.querySelectorAll(".sort-dropdown") //node list
 
     const OPEN = "sort-dropdown-open"
     const CLOSED = "sort-dropdown-closed"
@@ -590,6 +658,7 @@ const sortButtonDropdown = (event) => {
             item.classList.add(CLOSED)
             item.classList.remove(OPEN)
         })
+
         dropdownMenu.classList.remove(CLOSED)
         dropdownMenu.classList.add(OPEN)
 
@@ -597,26 +666,25 @@ const sortButtonDropdown = (event) => {
         dropdownMenu.classList.remove(OPEN)
         dropdownMenu.classList.add(CLOSED)
     }
-
 }
 
 
 const highlightSortType = (item) => {
-    let types = document.querySelectorAll(".sort-type")
-    types.forEach((item) => {
-        item.style.color = "#fff"
-    })
+    let type = item.id.split("-")[0];
+    let elements = document.querySelectorAll(`.${type}-sort-type`);
 
-    item.style.color = "lightgreen"
-
-}
+    elements.forEach(el => el.style.color = "#fff");
+    item.style.color = "lightgreen";
+};
 
 
+//Window Select
 let itemWindow = document.querySelectorAll(".image");
 itemWindow.forEach(item => {
     item.addEventListener("click", selectWindow)
 });
 
+//Minimize Lines
 let allMinBtn = document.querySelectorAll(".minimize-btn");
 allMinBtn.forEach(item => {
     item.textContent = "-"
@@ -630,8 +698,11 @@ allMinBtn.forEach(item => {
     })
 })
 
+//Sorting dropdown menu
 let allSortBtn = document.querySelectorAll(".sort-btn")
 allSortBtn.forEach(item => {
+    let name = item.id.split("-")[0]
+
     item.addEventListener("click", sortButtonDropdown)
 
     item.addEventListener("mousedown", () => {
@@ -640,21 +711,35 @@ allSortBtn.forEach(item => {
     item.addEventListener("mouseup", () => {
         item.style.transform = "scale(1)";
     })
+    item.textContent = `Sortèr: ${sortSettings[name]}`
 })
 
-let currentType = "index"
+//Sorting Selection
 let sortTypeButton = document.querySelectorAll(".sort-type")
-
 sortTypeButton.forEach(item => {
     item.addEventListener("click", () => {
-        highlightSortType(item)
 
-        let [name, , type] = item.id.split("-")
-        sortItems(name, type)
-        currentType = type
+        //smågatestein, length
+        let [name, , sortType] = item.id.split("-")
+
+        highlightSortType(item)
+        sortItems(name, sortType)
+
+        //Update Sort Button textContent
+        sortSettings[name] = document.getElementById(`${name}-sort-${sortType}`).textContent
+        document.getElementById(`${name}-sort-btn`).textContent = `Sortèr: ${sortSettings[name]}`
+
+        //close menu when something is selected
+        if (sortTypeButton) {
+            document.querySelectorAll(".sort-dropdown").forEach(menu => {
+                menu.classList.remove("sort-dropdown-open");
+                menu.classList.add("sort-dropdown-closed");
+            });
+        }
     })
 })
 
+//Close menu when clicking outside
 document.addEventListener("click", (event) => {
     let isButton = event.target.closest(".sort-btn");
     let isMenu = event.target.closest(".sort-dropdown");
@@ -667,18 +752,26 @@ document.addEventListener("click", (event) => {
     }
 });
 
+//Ascending/Descending
 let ascendingSortBtn = document.querySelectorAll(".sort-order-btn")
 ascendingSortBtn.forEach(item => {
     item.textContent = "↓"
-    item.addEventListener("click", (event) => {
-        let clicked = event.currentTarget
+    item.addEventListener("click", () => {
 
-        clicked.textContent = clicked.textContent === "↓" ? "↑" : "↓";
+        //Change textContent
+        item.textContent = item.textContent == "↓" ? "↑" : "↓";
 
-        let name = clicked.id.split("-")[0]
-        let type = currentType
+        //Lookup textContent, convert to sortSettings[name]
+        let nameConvention = (name) => {
+            if (name == "Index") return "index"
+            if (name == "Lengde") return "length"
+            if (name == "Bredde") return "width"
+            if (name == "Høyde") return "height"
+            if (name == "Mengde") return "amount"
+        }
 
-        sortItems(name, type)
+        let name = item.id.split("-")[0]
+        sortItems(name, nameConvention(sortSettings[name]))
 
         item.addEventListener("mousedown", () => {
             item.style.transform = "scale(0.90)";
@@ -688,3 +781,26 @@ ascendingSortBtn.forEach(item => {
         })
     })
 })
+
+//Overlay Image
+let bigImage = document.getElementById("info-image");
+let overlay = document.getElementById("image-overlay");
+let overlayImg = document.getElementById("overlay-img");
+bigImage.addEventListener("click", () => {
+    overlayImg.src = bigImage.src;
+    overlay.style.display = "flex";
+
+    overlayImg.style.width = "";
+    overlayImg.style.height = "";
+
+    if (bigImage.Width > bigImage.Height) {
+        overlayImg.style.width = "90vh";
+    } else {
+        overlayImg.style.height = "90vh";
+    }
+})
+
+//Close overlay image
+overlay.addEventListener("click", () => {
+    overlay.style.display = "none";
+});

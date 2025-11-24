@@ -1,5 +1,4 @@
 body {
-    position: absolute;
     user-select: none;
     margin-left: 20px;
 }
@@ -36,9 +35,13 @@ body {
     height: 1125px;
     width: 800px;
     font-size: 30px;
-    border: solid 1px black;
+    border-top: solid 1px black;
+    border-right: solid 1px black;
+    border-bottom: solid 1px black;
     background-color: var(--dark-grey);
     color: #fff;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #info-image {
@@ -69,8 +72,9 @@ body {
 .item-line {
     display: flex;
     flex-direction: row;
-    overflow-x: auto;
+    overflow-x: scroll;
     overflow-y: hidden;
+
     background-color: var(--light-grey);
     width: 100%;
     height: 200px;
@@ -89,11 +93,16 @@ body {
 
 .image {
     display: flex;
+    position: relative;
     flex-direction: column;
     width: 200px;
     height: 100%;
     flex-shrink: 0;
+}
 
+.image:hover {
+    filter: brightness(1.15);
+    transform: scale(1.03);
 }
 
 .image img {
@@ -118,7 +127,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px;
     height: 20px;
     border-radius: 5px;
     border: none;
@@ -135,17 +143,24 @@ body {
     background-color: rgb(212, 212, 212);
 }
 
+.sort-btn {
+    width: 120px;
+}
+
+.minimize-btn,
+.sort-order-btn {
+    width: 40px;
+}
+
 .sort-order-btn {
     position: relative;
     right: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20px;
     height: 20px;
     border-radius: 5px;
     border: none;
-    margin-left: 18px;
     margin-top: 2px;
     background-color: var(--light-grey);
     color: #fff;
@@ -153,12 +168,24 @@ body {
     padding-bottom: 5px;
 }
 
+.sort-dropdown {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    top: 25px;
+    right: 110px;
+    width: 100px;
+    height: 125px;
+    padding-top: 5px;
+    background-color: var(--dark-grey);
+    z-index: 1000;
+}
+
 .selected {
-    /* For selecting items */
     box-sizing: border-box;
-    border: solid 5px rgb(30, 81, 30);
-    height: 200px;
+    outline: 6px solid rgb(68, 68, 68);
     width: 200px;
+    outline-offset: -6px;
 }
 
 .collapsed-line {
@@ -168,21 +195,6 @@ body {
 
 .clickthrough {
     pointer-events: none;
-}
-
-.sort-dropdown {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    top: 25px;
-    right: 50px;
-    width: 80px;
-    height: 120px;
-    padding-top: 5px;
-    background-color: var(--dark-grey);
-    z-index: 1000;
-    
-
 }
 
 .sort-dropdown-closed {
@@ -198,7 +210,26 @@ body {
 .sort-dropdown>div {
     display: flex;
     align-items: center;
-    padding-left: 5px;
+    padding-left: 15px;
     font-size: 20px;
     color: #fff;
+}
+
+#image-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    cursor: zoom-out;
+    display: none;
+}
+
+#overlay-img {
+    object-fit: contain;
 }
