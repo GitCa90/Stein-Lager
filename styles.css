@@ -19,6 +19,7 @@ body {
 #total-screen {
     display: flex;
     flex-direction: row;
+
 }
 
 #main-container {
@@ -124,8 +125,8 @@ body {
     font-size: 14px;
 }
 
-.sort-btn,
-.minimize-btn {
+.minimize-btn,
+.sort-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -139,22 +140,22 @@ body {
     font-size: 15px;
 }
 
-.sort-btn:hover,
-.minimize-btn:hover,
-.sort-order-btn:hover {
-    background-color: rgb(212, 212, 212);
-}
-
 .sort-btn {
     width: 120px;
 }
 
+.minimize-btn:hover,
+.sort-btn:hover,
+.ascending-btn:hover {
+    background-color: rgb(212, 212, 212);
+}
+
 .minimize-btn,
-.sort-order-btn {
+.ascending-btn {
     width: 40px;
 }
 
-.sort-order-btn {
+.ascending-btn {
     position: relative;
     right: 90px;
     display: flex;
@@ -170,7 +171,7 @@ body {
     padding-bottom: 5px;
 }
 
-.sort-dropdown {
+.sort-menu {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -181,6 +182,29 @@ body {
     padding-top: 5px;
     background-color: var(--dark-grey);
     z-index: 1000;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.sort-setting {
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.sort-setting-active {
+    color: lightgreen;
+}
+
+.sort-setting:hover {
+    color: lightgreen;
+}
+
+.sort-menu-open {
+    pointer-events: auto;
+    opacity: 1;
 }
 
 .selected {
@@ -199,23 +223,6 @@ body {
     pointer-events: none;
 }
 
-.sort-dropdown-closed {
-    pointer-events: none;
-    opacity: 0;
-}
-
-.sort-dropdown-open {
-    pointer-events: auto;
-    opacity: 1;
-}
-
-.sort-dropdown>div {
-    display: flex;
-    align-items: center;
-    padding-left: 15px;
-    font-size: 20px;
-    color: #fff;
-}
 
 #image-overlay {
     position: fixed;
@@ -233,5 +240,8 @@ body {
 }
 
 #overlay-img {
+    max-width: 100vw;
+    max-height: 100vh;
     object-fit: contain;
+    
 }

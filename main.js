@@ -1,4 +1,4 @@
-let data = {
+const data = {
     smågatestein: [
         {
             name: "Smågatestein",
@@ -38,20 +38,6 @@ let data = {
         {
             name: "Smågatestein",
             material: "Granitt",
-            length: 10,
-            width: 8,
-            height: 8,
-            amount: 33,
-            color: "Grå",
-            surface: "",
-            origin: "",
-            stored: "Sviland",
-            image: "smågatestein/637dce97f6656b88d378c885_Beer-Mix_smågatestein_brostein_4.jpg",
-            note: "",
-        },
-        {
-            name: "Smågatestein",
-            material: "Granitt",
             length: 11,
             width: 11,
             height: 8,
@@ -80,38 +66,24 @@ let data = {
         {
             name: "Smågatestein",
             material: "Granitt",
+            length: 10,
+            width: 10,
+            height: 10,
+            amount: 75,
+            color: "Grå",
+            surface: "Saget",
+            origin: "Ruten",
+            stored: "Sviland",
+            image: "smågatestein/fwf23e2d.jpg",
+            note: "Her kan vi skrive ekstra informasjon om steinen...",
+        },
+        {
+            name: "Smågatestein",
+            material: "Granitt",
             length: 8,
             width: 8,
             height: 8,
             amount: 13,
-            color: "Grå",
-            surface: "",
-            origin: "",
-            stored: "Sviland",
-            image: "smågatestein/3423424323235234.jpg",
-            note: "",
-        },
-        {
-            name: "Smågatestein",
-            material: "Granitt",
-            length: 100,
-            width: 120,
-            height: 100,
-            amount: 63,
-            color: "Grå",
-            surface: "",
-            origin: "",
-            stored: "Sviland",
-            image: "smågatestein/637dce97f6656b88d378c885_Beer-Mix_smågatestein_brostein_4.jpg",
-            note: "",
-        },
-        {
-            name: "Smågatestein",
-            material: "Granitt",
-            length: 100,
-            width: 100,
-            height: 8,
-            amount: 15,
             color: "Grå",
             surface: "",
             origin: "",
@@ -219,6 +191,20 @@ let data = {
             stored: "Sviland",
             image: "storgatestein/storgate4.jpg",
             note: "Ble tatt opp på lura skole 2014",
+        },
+        {
+            name: "Storgatestein",
+            material: "Granitt",
+            length: 200,
+            width: 140,
+            height: 140,
+            amount: 13,
+            color: "Hvit",
+            surface: "Sagt",
+            origin: "Hana",
+            stored: "Vatne",
+            image: "storgatestein/storgatestein5.jpg",
+            note: "Fra porsholen 2020",
         },
     ],
 
@@ -352,7 +338,7 @@ let data = {
             image: "tegl/23423desf24.jpg",
             note: "",
         },
-         {
+        {
             name: "Tegl",
             material: "Keramisk",
             length: 20,
@@ -366,7 +352,7 @@ let data = {
             image: "tegl/tegl2.jpg",
             note: "",
         },
-         {
+        {
             name: "Tegl",
             material: "Keramisk",
             length: 20,
@@ -411,6 +397,20 @@ let data = {
             image: "heller/321492+408.jpg",
             note: "",
         },
+        {
+            name: "Heller",
+            material: "Betong",
+            length: 60,
+            width: 60,
+            height: 12,
+            amount: 220,
+            color: "Grå",
+            surface: "Ruglete",
+            origin: "",
+            stored: "Vatne",
+            image: "heller/heller5.jpg",
+            note: "",
+        },
     ],
 
     kantstein: [
@@ -428,10 +428,24 @@ let data = {
             image: "kantstein/23e23e232523e2.jpg",
             note: "",
         },
+        {
+            name: "Kantstein",
+            material: "Granitt",
+            length: 1000,
+            width: 120,
+            height: 250,
+            amount: 200,
+            color: "Hvit",
+            surface: "",
+            origin: "",
+            stored: "Sviland",
+            image: "kantstein/kantstein5.jpg",
+            note: "",
+        },
     ],
 
     kurvestein: [
-         {
+        {
             name: "Kurvestein",
             material: "Granitt",
             length: 1000,
@@ -445,7 +459,7 @@ let data = {
             image: "kurvestein/kurvestein1.jpg",
             note: "",
         },
-         {
+        {
             name: "Kurvestein",
             material: "Granitt",
             length: 1000,
@@ -479,12 +493,10 @@ let data = {
     ],
 }
 
-
-const item = [
+const materialList = [
     "smågatestein", "storgatestein", "belegningsstein", "tegl",
     "heller", "kantstein", "kurvestein", "platekant"
 ];
-
 
 const sortSettings = {
     smågatestein: "Index",
@@ -497,8 +509,92 @@ const sortSettings = {
     platekant: "Index"
 };
 
+const sortNameMap = {
+    "Index": "index",
+    "Lengde": "length",
+    "Bredde": "width",
+    "Høyde": "height",
+    "Mengde": "amount"
+};
 
-const squareMeterOrMeter = (element) => {
+
+const template = document.querySelector("#material-template");
+function createWindowDOM(nodelist) {
+    const fragment = document.createDocumentFragment()
+
+    nodelist.forEach((item, index) => {
+        const mainDiv = document.createElement("div")
+        const textDiv = document.createElement("div")
+        const image = document.createElement("img")
+
+        mainDiv.id = `${item.name}_${index}`
+        mainDiv.classList.add("image")
+        mainDiv.dataset.material = item.name.toLowerCase()
+        mainDiv.dataset.index = index
+
+        textDiv.classList.add("item-text")
+        textDiv.textContent = `${item.length} x ${item.width} x ${item.height} | ` + squareMeterOrMeter(item)
+
+        image.src = item.image
+
+        mainDiv.append(textDiv, image)
+        fragment.append(mainDiv)
+    })
+    return fragment
+}
+
+function makeWindows() {
+    const container = document.getElementById("main-container")
+
+    materialList.forEach(material => {
+        const dataArray = data[material]
+        if (!dataArray || dataArray.length === 0 || !dataArray[0].name) return;
+
+        const clone = template.content.cloneNode(true)
+
+        clone.querySelector(".material-section").dataset.material = material
+        clone.querySelector(".minimize-btn").dataset.material = material
+        clone.querySelector(".sort-btn").dataset.material = material
+        clone.querySelector(".sort-btn").textContent = `Sortèr: ${sortSettings[material]}`
+        clone.querySelector(".sort-menu").dataset.material = material
+        clone.querySelectorAll(".sort-setting").forEach(type => type.dataset.material = material)
+        clone.querySelector(".ascending-btn").dataset.material = material
+        clone.querySelector(".section-label").textContent = material[0].toUpperCase() + material.slice(1)
+        clone.querySelector(".item-line").dataset.material = material
+
+        clone.querySelector(".item-line").append(createWindowDOM(dataArray))
+        clone.querySelectorAll(".image").forEach(image => image.dataset.material = material)
+
+        container.append(clone)
+    })
+}
+
+const originalData = JSON.parse(JSON.stringify(data));
+function sortWindows(materialName, setting) {
+    const ascendButton = document.querySelector(`.ascending-btn[data-material="${materialName}"]`)
+    const property = sortNameMap[setting] || setting
+
+    if (property == "index") {
+        if (ascendButton.textContent == "↓") {
+            data[materialName] = [...originalData[materialName]];
+        } else {
+            data[materialName] = [...originalData[materialName]].reverse();
+        }
+
+    } else {
+        if (ascendButton.textContent == "↑") {
+            data[materialName].sort((a, b) => a[property] - b[property])
+        } else {
+            data[materialName].sort((a, b) => b[property] - a[property])
+        }
+    }
+
+    const container = document.querySelector(`.item-line[data-material="${materialName}"]`)
+    container.innerHTML = "";
+    container.append(createWindowDOM(data[materialName]));
+}
+
+function squareMeterOrMeter(element) {
     if (
         element.name == "Smågatestein" ||
         element.name == "Belegningsstein" ||
@@ -511,101 +607,91 @@ const squareMeterOrMeter = (element) => {
     }
 }
 
+function mininmizeButton(element) {
+    const materialName = element.dataset.material
+    const section = document.querySelector(`.material-section[data-material="${materialName}"]`)
+    const container = section.querySelector(".item-line")
 
-const originalData = JSON.parse(JSON.stringify(data));
-const sortItems = (name, type) => {
-    let ascending = document.getElementById(`${name}-sort-order`)
+    const collapsed = container.classList.toggle("collapsed-line")
 
-    if (type == "index") {
-        if (ascending.textContent == "↓") {
-            data[name] = [...originalData[name]];
-        } else {
-            data[name] = [...originalData[name]].reverse();
-        }
-    } else {
-        if (ascending.textContent == "↑") {
-            data[name].sort((a, b) => a[type] - b[type])
-        } else {
-            data[name].sort((a, b) => b[type] - a[type])
-        }
-    }
-
-    let container = document.getElementById(`${name}-item`);
-    container.innerHTML = "";
-    container.append(createWindowDOM(data[name]));
-
-    let items = container.querySelectorAll(".image");
-    items.forEach(item => {
-        item.addEventListener("click", selectWindow)
-    });
+    element.textContent = collapsed ? "+" : "-"
 }
 
+function openSortMenu(element) {
+    const materialName = element.dataset.material
+    const sortMenu = document.querySelector(`.sort-menu[data-material="${materialName}"]`)
+    const allMenus = document.querySelectorAll(".sort-menu")
 
-const createWindowDOM = (element) => {
-    const fragment = document.createDocumentFragment()
-
-    for (let i = 0; i < element.length; i++) {
-        const mainDiv = document.createElement("div")
-        const textDiv = document.createElement("div")
-        const image = document.createElement("img")
-
-        mainDiv.classList.add("image")
-        mainDiv.id = `${element[i].name}_${i}`
-
-        textDiv.classList.add("item-text")
-        textDiv.textContent = `${element[i].length} x ${element[i].width} x ${element[i].height} | ` + squareMeterOrMeter(element[i])
-
-        image.src = element[i].image
-
-        mainDiv.append(textDiv, image)
-        fragment.append(mainDiv)
-    }
-    return fragment
-}
-
-
-const makeWindows = () => {
-    for (let i = 0; i < item.length; i++) {
-        let key = item[i]
-        let dataArray = data[key]
-
-        if (!dataArray || dataArray.length === 0 || !dataArray[0].name) continue;
-
-
-        document.getElementById(`${key}-item`).append(createWindowDOM(dataArray))
-    }
-
-    let types = document.querySelectorAll(".sort-type")
-    types.forEach((item) => {
-        if (item.id.includes("index")) {
-            item.style.color = "lightgreen";
-            currentSelected = item
+    allMenus.forEach(menu => {
+        if (menu.dataset.material !== materialName) {
+            menu.classList.remove("sort-menu-open")
         }
     })
+
+    sortMenu.classList.toggle("sort-menu-open");
 }
-makeWindows();
 
+function onSortSettingSelect(element) {
+    const materialName = element.dataset.material
+    const setting = element.dataset.sort
 
-let selected = null;
-const selectWindow = (event) => {
-    let [materialRaw, numberRaw] = event.currentTarget.id.split("_")
-    let material = materialRaw.toLowerCase();
-    let number = parseInt(numberRaw)
+    highlightSortType(element)
+    sortWindows(materialName, setting)
 
-    displayInfo(data[material][number])
+    sortSettings[materialName] = setting
 
-    let currentImage = document.getElementById(event.currentTarget.id)
-    if (currentImage !== selected) {
-        if (selected !== null) {
-            selected.classList.remove("selected")
-        }
-        selected = currentImage
-        currentImage.classList.add("selected")
+    const sortButton = document.querySelector(`.sort-btn[data-material="${materialName}"]`)
+    const settingText = document.querySelector(`.sort-setting[data-sort="${setting}"][data-material="${materialName}"]`).textContent
+    sortButton.textContent = `Sortèr: ${settingText}`
+
+    document.querySelectorAll(".sort-menu").forEach(menu => menu.classList.remove("sort-menu-open"));
+}
+
+function highlightSortType(element) {
+    const materialName = element.dataset.material
+    const sortSetting = document.querySelectorAll(`.sort-setting[data-material="${materialName}"]`)
+
+    sortSetting.forEach(setting => setting.classList.remove("sort-setting-active"));
+    element.classList.add("sort-setting-active")
+}
+
+function closeSortMenu(element) {
+    const button = element.target.closest(".sort-btn");
+    const menu = element.target.closest(".sort-menu");
+
+    if (!button && !menu) {
+        document.querySelectorAll(".sort-menu").forEach(menu => {
+            menu.classList.remove("sort-menu-open");
+
+        });
     }
 }
 
+function ascendingButton(element) {
+    const materialName = element.dataset.material
 
-const displayInfo = (currentObject) => {
+    element.textContent = element.textContent == "↓" ? "↑" : "↓";
+
+    sortWindows(materialName, sortSettings[materialName])
+}
+
+function onImageSelect(element) {
+    const materialName = element.dataset.material
+    const index = element.dataset.index
+
+    imageSelectBorder(materialName, index)
+    displayInfo(data[materialName][index])
+}
+
+function imageSelectBorder(materialName, index) {
+    const selectedImage = document.querySelector(`.image[data-material="${materialName}"][data-index="${index}"]`)
+    const allImages = document.querySelectorAll(".image")
+
+    allImages.forEach((image) => image.classList.remove("selected"))
+    selectedImage.classList.add("selected")
+}
+
+function displayInfo(currentObject) {
     let image = document.getElementById("info-image")
     let name = document.getElementById("info-name")
     let material = document.getElementById("info-material")
@@ -629,178 +715,102 @@ const displayInfo = (currentObject) => {
     note.textContent = `Merknad: ${currentObject.note}`
 }
 
-
-const mininmizeButton = (event) => {
-    let btn = event.currentTarget
-    let line = event.currentTarget.id.split("-")[0]
-    let container = document.getElementById(`${line}-item`)
-
-    if (btn.textContent == "-") {
-        btn.textContent = "+"
-        container.classList.add("collapsed-line")
-    } else if (btn.textContent == "+") {
-        btn.textContent = "-"
-        container.classList.remove("collapsed-line")
-    }
+function onButtonDown(element) {
+    element.style.transform = "scale(0.90)";
 }
 
-
-const sortButtonDropdown = (event) => {
-    let buttonId = event.currentTarget.id //smågatestein-sort-btn
-    let dropdownMenu = document.getElementById(`${buttonId.split("-")[0]}-sort-dropdown`) //whole div
-    let allDropdownMenu = document.querySelectorAll(".sort-dropdown") //node list
-
-    const OPEN = "sort-dropdown-open"
-    const CLOSED = "sort-dropdown-closed"
-
-    if (dropdownMenu.classList.contains(CLOSED)) {
-        allDropdownMenu.forEach(item => {
-            item.classList.add(CLOSED)
-            item.classList.remove(OPEN)
-        })
-
-        dropdownMenu.classList.remove(CLOSED)
-        dropdownMenu.classList.add(OPEN)
-
-    } else if (dropdownMenu.classList.contains(OPEN)) {
-        dropdownMenu.classList.remove(OPEN)
-        dropdownMenu.classList.add(CLOSED)
-    }
+function onButtonUp(element) {
+    element.style.transform = "scale(1)";
 }
 
+function init() {
+    makeWindows();
+    document.querySelectorAll(`.sort-setting[data-sort="index"]`).forEach(index => index.classList.add("sort-setting-active"))
+}
 
-const highlightSortType = (item) => {
-    let type = item.id.split("-")[0];
-    let elements = document.querySelectorAll(`.${type}-sort-type`);
-
-    elements.forEach(el => el.style.color = "#fff");
-    item.style.color = "lightgreen";
-};
+init()
 
 
-//Window Select
-let itemWindow = document.querySelectorAll(".image");
-itemWindow.forEach(item => {
-    item.addEventListener("click", selectWindow)
-});
 
-//Minimize Lines
-let allMinBtn = document.querySelectorAll(".minimize-btn");
-allMinBtn.forEach(item => {
-    item.textContent = "-"
-    item.addEventListener("click", mininmizeButton)
 
-    item.addEventListener("mousedown", () => {
-        item.style.transform = "scale(0.90)";
-    })
-    item.addEventListener("mouseup", () => {
-        item.style.transform = "scale(1)";
-    })
-})
-
-//Sorting dropdown menu
-let allSortBtn = document.querySelectorAll(".sort-btn")
-allSortBtn.forEach(item => {
-    let name = item.id.split("-")[0]
-
-    item.addEventListener("click", sortButtonDropdown)
-
-    item.addEventListener("mousedown", () => {
-        item.style.transform = "scale(0.90)";
-    })
-    item.addEventListener("mouseup", () => {
-        item.style.transform = "scale(1)";
-    })
-    item.textContent = `Sortèr: ${sortSettings[name]}`
-})
-
-//Sorting Selection
-let sortTypeButton = document.querySelectorAll(".sort-type")
-sortTypeButton.forEach(item => {
-    item.addEventListener("click", () => {
-
-        //smågatestein, length
-        let [name, , sortType] = item.id.split("-")
-
-        highlightSortType(item)
-        sortItems(name, sortType)
-
-        //Update Sort Button textContent
-        sortSettings[name] = document.getElementById(`${name}-sort-${sortType}`).textContent
-        document.getElementById(`${name}-sort-btn`).textContent = `Sortèr: ${sortSettings[name]}`
-
-        //close menu when something is selected
-        if (sortTypeButton) {
-            document.querySelectorAll(".sort-dropdown").forEach(menu => {
-                menu.classList.remove("sort-dropdown-open");
-                menu.classList.add("sort-dropdown-closed");
-            });
-        }
-    })
-})
-
-//Close menu when clicking outside
 document.addEventListener("click", (event) => {
-    let isButton = event.target.closest(".sort-btn");
-    let isMenu = event.target.closest(".sort-dropdown");
 
-    if (!isButton && !isMenu) {
-        document.querySelectorAll(".sort-dropdown").forEach(menu => {
-            menu.classList.remove("sort-dropdown-open");
-            menu.classList.add("sort-dropdown-closed");
-        });
+    closeSortMenu(event)
+
+    const minButtonElement = event.target.closest(".minimize-btn")
+    if (minButtonElement) {
+        mininmizeButton(minButtonElement)
     }
-});
 
-//Ascending/Descending
-let ascendingSortBtn = document.querySelectorAll(".sort-order-btn")
-ascendingSortBtn.forEach(item => {
-    item.textContent = "↓"
-    item.addEventListener("click", () => {
+    const sortButtonElement = event.target.closest(".sort-btn")
+    if (sortButtonElement) {
+        openSortMenu(sortButtonElement);
+    }
 
-        //Change textContent
-        item.textContent = item.textContent == "↓" ? "↑" : "↓";
+    const sortSettingElement = event.target.closest(".sort-setting")
+    if (sortSettingElement) {
+        onSortSettingSelect(sortSettingElement)
+    }
 
-        //Lookup textContent, convert to sortSettings[name]
-        let nameConvention = (name) => {
-            if (name == "Index") return "index"
-            if (name == "Lengde") return "length"
-            if (name == "Bredde") return "width"
-            if (name == "Høyde") return "height"
-            if (name == "Mengde") return "amount"
-        }
+    const imageElement = event.target.closest(".image");
+    if (imageElement) {
+        onImageSelect(imageElement);
+    }
 
-        let name = item.id.split("-")[0]
-        sortItems(name, nameConvention(sortSettings[name]))
-
-        item.addEventListener("mousedown", () => {
-            item.style.transform = "scale(0.90)";
-        })
-        item.addEventListener("mouseup", () => {
-            item.style.transform = "scale(1)";
-        })
-    })
+    const ascendButtonElement = event.target.closest(".ascending-btn")
+    if (ascendButtonElement) {
+        ascendingButton(ascendButtonElement);
+    }
 })
 
-//Overlay Image
-let bigImage = document.getElementById("info-image");
-let overlay = document.getElementById("image-overlay");
-let overlayImg = document.getElementById("overlay-img");
+document.addEventListener("mousedown", (event) => {
+
+    const minimizeButton = event.target.closest(".minimize-btn")
+    const sortButton = event.target.closest(".sort-btn")
+    const ascendingButton = event.target.closest(".ascending-btn")
+
+    if (minimizeButton) onButtonDown(minimizeButton)
+    if (sortButton) onButtonDown(sortButton)
+    if (ascendingButton) onButtonDown(ascendingButton)
+})
+
+document.addEventListener("mouseup", (event) => {
+
+    const minimizeButton = event.target.closest(".minimize-btn")
+    const sortButton = event.target.closest(".sort-btn")
+    const ascendingButton = event.target.closest(".ascending-btn")
+
+    if (minimizeButton) onButtonUp(minimizeButton)
+    if (sortButton) onButtonUp(sortButton)
+    if (ascendingButton) onButtonUp(ascendingButton)
+})
+
+const bigImage = document.getElementById("info-image");
+const overlay = document.getElementById("image-overlay");
+const overlayImg = document.getElementById("overlay-img");
 bigImage.addEventListener("click", () => {
+
     overlayImg.src = bigImage.src;
     overlay.style.display = "flex";
 
     overlayImg.style.width = "";
     overlayImg.style.height = "";
 
-    if (bigImage.Width > bigImage.Height) {
-        overlayImg.style.width = "90vh";
-    } else {
-        overlayImg.style.height = "90vh";
-    }
-})
+    overlayImg.onload = () => {
+        const w = overlayImg.naturalWidth;
+        const h = overlayImg.naturalHeight;
 
-//Close overlay image
+        if (w > h) {
+            overlayImg.style.width = "80vw";
+            overlayImg.style.height = "auto";
+
+        } else {
+            overlayImg.style.height = "50vh";
+            overlayImg.style.width = "auto";
+        }
+    };
+});
+
 overlay.addEventListener("click", () => {
     overlay.style.display = "none";
 });
